@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
       title: "Grocery Store",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        primaryColor: Colors.green,
       ),
       home: SplashScreen(),
     );
