@@ -12,12 +12,12 @@ class HomePage extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                Image.asset(
-                  "assets/29959.jpg",
-                  height: 250,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                )
+                // Image.asset(
+                //   "assets/29959.jpg",
+                //   height: 250,
+                //   width: double.infinity,
+                //   fit: BoxFit.cover,
+                // )
               ],
             ),
           ),
