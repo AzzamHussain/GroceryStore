@@ -1,6 +1,10 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:grocerystore/constants/colors.dart';
 import 'package:grocerystore/pages/HomePage.dart';
+import 'package:grocerystore/pages/splashScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,21 +19,14 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
-  void initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white70,
-      ),
+      title: "Grocery Store",
       debugShowCheckedModeBanner: false,
-      routes: {
-        "/": (context) => HomePage(),
-      },
+      theme: ThemeData(
+        primarySwatch: Colors.grey,
+      ),
+      home: SplashScreen(),
     );
   }
 }
