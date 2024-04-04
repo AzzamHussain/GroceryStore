@@ -1,6 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:grocerystore/pages/HomePage.dart';
 import '../constants/colors.dart';
-//import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -11,16 +13,28 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
+  void initState() {
+    super.initState();
+    Timer(
+        Duration(seconds: 3),
+        () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomePage(),
+            )));
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        color: green, //background: rgba(83, 177, 117, 1);
+        color: green, // Adjust background color as needed
         height: MediaQuery.of(context).size.height,
         child: Center(
           child: Image.asset(
-            'assets/carrot.png', // Adjust the file name and path as needed
-            width: 100, // Adjust width as needed
-            height: 100, // Adjust height as needed
+            'assets/Group 1.png', // Adjust the file name and path as needed
+            width: 267.42, // Width from Figma styling
+            height: 68.61, // Height from Figma styling
           ),
         ),
       ),
