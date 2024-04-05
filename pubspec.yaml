@@ -67,6 +67,7 @@ flutter:
     - assets/Group 1.png
     - assets/Navigation_Bar.png
     - assets/On Light - Portrait.png
+    - assets/onBoarding.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
