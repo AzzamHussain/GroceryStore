@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocerystore/pages/HomePage.dart';
 
 class Boarding extends StatefulWidget {
   const Boarding({super.key});
@@ -54,6 +55,40 @@ class _BoardingState extends State<Boarding> {
                 'assets/onb.png',
                 width: 295,
                 height: 15,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 630.16,
+            left: 4.5,
+            child: GestureDetector(
+              onTap: () {
+                // Handle button tap here
+                // For example, you can navigate to another screen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomePage(),
+                  ),
+                );
+              },
+              child: Container(
+                height: 67,
+                width: 353, // Adjust width as needed
+                decoration: BoxDecoration(
+                  color: Colors.green, // Change color as needed
+                  borderRadius: BorderRadius.circular(
+                      10), // Adjust border radius as needed
+                ),
+                child: Center(
+                  child: Text(
+                    'Get Started',
+                    style: TextStyle(
+                      color: Colors.white, // Change text color as needed
+                      fontSize: 18, // Change text size as needed
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
