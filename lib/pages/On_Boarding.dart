@@ -22,10 +22,10 @@ class _BoardingState extends State<Boarding> {
             ),
           ),
           Positioned(
-            top: 485.26,
-            left: 182.76,
+            top: 430.26,
+            left: 165.76,
             child: Opacity(
-              opacity: 0.0,
+              opacity: 1.0,
               child: Image.asset(
                 'assets/carrot.png',
                 width: 48.47,
@@ -34,14 +34,26 @@ class _BoardingState extends State<Boarding> {
             ),
           ),
           Positioned(
-            top: 577.28,
-            left: 80.5,
+            top: 500.28,
+            left: 60.5,
             child: Opacity(
-              opacity: 0.0,
+              opacity: 1.0,
               child: Image.asset(
                 'assets/Welcome to our store.png',
                 width: 253,
                 height: 86,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 600,
+            left: 38,
+            child: Opacity(
+              opacity: 1.0,
+              child: Image.asset(
+                'assets/onb.png',
+                width: 295,
+                height: 15,
               ),
             ),
           ),
