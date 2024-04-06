@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:grocerystore/constants/colors.dart';
 import 'package:grocerystore/pages/HomePage.dart';
 import 'package:grocerystore/pages/splashScreen.dart';
+import 'package:grocerystore/pages/On_Boarding.dart';
 
 void main() {
   runApp(MyApp());

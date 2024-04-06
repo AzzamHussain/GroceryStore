@@ -20,7 +20,31 @@ class _BoardingState extends State<Boarding> {
               width: MediaQuery.of(context).size.width,
               fit: BoxFit.cover,
             ),
-          )
+          ),
+          Positioned(
+            top: 485.26,
+            left: 182.76,
+            child: Opacity(
+              opacity: 0.0,
+              child: Image.asset(
+                'assets/carrot.png',
+                width: 48.47,
+                height: 56.36,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 577.28,
+            left: 80.5,
+            child: Opacity(
+              opacity: 0.0,
+              child: Image.asset(
+                'assets/Welcome to our store.png',
+                width: 253,
+                height: 86,
+              ),
+            ),
+          ),
         ],
       ),
     );
