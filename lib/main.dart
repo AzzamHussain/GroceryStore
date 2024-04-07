@@ -3,7 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:grocerystore/constants/colors.dart';
-import 'package:grocerystore/pages/HomePage.dart';
+import 'package:grocerystore/pages/Home_page.dart';
 import 'package:grocerystore/pages/splashScreen.dart';
 import 'package:grocerystore/pages/On_Boarding.dart';
 
@@ -28,6 +28,11 @@ class _MyAppState extends State<MyApp> {
         primaryColor: Colors.green,
       ),
       home: SplashScreen(),
+      // routes: {
+      //   '/splash': (context) => SplashScreen(),
+      //   '/boarding': (context) => Boarding(),
+      //   //'/home': (context) => ProductListScreen(),
+      // },
     );
   }
 }

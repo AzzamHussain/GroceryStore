@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:grocerystore/pages/HomePage.dart';
+//import 'package:grocerystore/pages/HomePage.dart';
+import 'package:grocerystore/pages/Home_page.dart';
+import 'package:grocerystore/pages/product.dart';
+import 'package:grocerystore/pages/productDetails.dart';
+//import 'package:grocerystore/pages/HomePage/HomePage.dart';
 
 class Boarding extends StatefulWidget {
   const Boarding({super.key});
@@ -63,12 +67,10 @@ class _BoardingState extends State<Boarding> {
             left: 4.5,
             child: GestureDetector(
               onTap: () {
-                // Handle button tap here
-                // For example, you can navigate to another screen
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HomePage(),
+                    builder: (context) => ProductListScreen(),
                   ),
                 );
               },

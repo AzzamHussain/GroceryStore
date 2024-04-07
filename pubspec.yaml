@@ -71,6 +71,9 @@ flutter:
     - assets/carrot.png
     - assets/Welcome to our store.png
     - assets/onb.png
+    - assets/apple.png
+    - assets/orange.png
+    - assets/banana.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:grocerystore/pages/HomePage.dart';
 import 'package:grocerystore/pages/On_Boarding.dart';
 import '../constants/colors.dart';
 
