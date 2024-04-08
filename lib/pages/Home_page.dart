@@ -51,8 +51,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
             ),
           ),
           SizedBox(
-              height:
-                  20), // Add some spacing between search and "Exclusive Offer"
+            height: 20,
+          ), // Add some spacing between search and "Exclusive Offer"
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Row(
@@ -87,101 +87,98 @@ class _ProductListScreenState extends State<ProductListScreen> {
               ],
             ),
           ),
-          SizedBox(height: 10), // Add some spacing below "Exclusive Offer"
+          SizedBox(
+            height: 10,
+          ), // Add some spacing below "Exclusive Offer"
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children: filteredProducts.map((product) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        product.image,
-                        width: 100,
-                        height: 100,
-                        fit: BoxFit.cover,
-                      ),
-                      Text(
-                        product.name,
-                        style: TextStyle(
-                          fontSize: 18,
-                          // Change the font size as desired
-                          //color: Colors.grey, // Customize the color if needed
+                  child: Container(
+                    width: 150,
+                    height: 200.51,
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 0), //changes
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                          offset: Offset(0, 2),
                         ),
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                          product
-                              .quantity, // Add additional text, change it as needed//
+                      ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          product.image,
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          product.name,
                           style: TextStyle(
-                            fontSize: 10, // Change the font size as desired
-                            color: Colors.grey, // Customize the color if needed
-                          )),
-                      SizedBox(height: 10),
-                      // Text(
-                      //     product
-                      //         .price, // Add additional text, change it as needed//
-                      //     style: TextStyle(
-                      //       fontSize: 14, // Change the font size as desired
-                      //       color:
-                      //           Colors.black, // Customize the color if needed
-                      //     )),
-                      // SizedBox(
-                      //     height:
-                      //         10), // Add spacing between additional text and button
-                      // ElevatedButton.icon(
-                      //   onPressed: () {
-                      //     // Handle button tap
-                      //   },
-                      //   icon: Icon(Icons.add), // Add icon to the button
-                      //   label: Text('Add to Cart'), // Add label to the button
-                      // ),
-                      Row(
-                        children: [
-                          Text(
-                            product
-                                .price, // Add additional text, change it as needed
-                            style: TextStyle(
-                              fontSize: 14, // Change the font size as desired
-                              color:
-                                  Colors.black, // Customize the color if needed
-                            ),
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
                           ),
-                          SizedBox(
-                              width:
-                                  4), // Add spacing between price text and button
-                          InkWell(
-                            onTap: () {
-                              // Handle button tap
-                            },
-                            child: Container(
-                              width: 24, // Adjust button size as needed
-                              height: 24, // Adjust button size as needed
-                              decoration: BoxDecoration(
-                                color: Colors.green, // Button color
-                                borderRadius:
-                                    BorderRadius.circular(8), // Border radius
-                              ),
-                              child: Icon(
-                                Icons.add,
-                                color: Colors.white, // Icon color
+                        ),
+                        SizedBox(
+                          height: 4,
+                        ),
+                        Text(
+                          product.quantity,
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 4,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              product.price,
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.black,
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                          height:
-                              8), // Add spacing between additional text and button
-                      // ElevatedButton.icon(
-                      //   onPressed: () {
-                      //     // Handle button tap
-                      //   },
-                      //   icon: Icon(Icons.add_shopping_cart), // Add icon to the button
-                      //   label: Text('Add to Cart'), // Add label to the button
-                      // ),
-                    ],
+                            SizedBox(
+                              width: 4,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                // Handle button tap
+                              },
+                              child: Container(
+                                width: 24,
+                                height: 24,
+                                decoration: BoxDecoration(
+                                  color: Colors.green,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 );
               }).toList(),
