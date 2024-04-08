@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grocerystore/pages/product.dart';
 import 'package:grocerystore/pages/productDetails.dart';
+import 'package:grocerystore/constants/colors.dart';
 
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({Key? key}) : super(key: key);
@@ -104,23 +105,80 @@ class _ProductListScreenState extends State<ProductListScreen> {
                       Text(
                         product.name,
                         style: TextStyle(
-                          fontSize: 18, // Change the font size as desired
+                          fontSize: 18,
+                          // Change the font size as desired
                           //color: Colors.grey, // Customize the color if needed
                         ),
                       ),
                       SizedBox(height: 8),
                       Text(
                           product
-                              .price, // Add additional text, change it as needed//
+                              .quantity, // Add additional text, change it as needed//
                           style: TextStyle(
-                            fontSize: 14, // Change the font size as desired
+                            fontSize: 10, // Change the font size as desired
                             color: Colors.grey, // Customize the color if needed
-                          )) // Add spacing between additional text and button
+                          )),
+                      SizedBox(height: 10),
+                      // Text(
+                      //     product
+                      //         .price, // Add additional text, change it as needed//
+                      //     style: TextStyle(
+                      //       fontSize: 14, // Change the font size as desired
+                      //       color:
+                      //           Colors.black, // Customize the color if needed
+                      //     )),
+                      // SizedBox(
+                      //     height:
+                      //         10), // Add spacing between additional text and button
                       // ElevatedButton.icon(
                       //   onPressed: () {
                       //     // Handle button tap
                       //   },
                       //   icon: Icon(Icons.add), // Add icon to the button
+                      //   label: Text('Add to Cart'), // Add label to the button
+                      // ),
+                      Row(
+                        children: [
+                          Text(
+                            product
+                                .price, // Add additional text, change it as needed
+                            style: TextStyle(
+                              fontSize: 14, // Change the font size as desired
+                              color:
+                                  Colors.black, // Customize the color if needed
+                            ),
+                          ),
+                          SizedBox(
+                              width:
+                                  4), // Add spacing between price text and button
+                          InkWell(
+                            onTap: () {
+                              // Handle button tap
+                            },
+                            child: Container(
+                              width: 24, // Adjust button size as needed
+                              height: 24, // Adjust button size as needed
+                              decoration: BoxDecoration(
+                                color: Colors.green, // Button color
+                                borderRadius:
+                                    BorderRadius.circular(8), // Border radius
+                              ),
+                              child: Icon(
+                                Icons.add,
+                                color: Colors.white, // Icon color
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                          height:
+                              8), // Add spacing between additional text and button
+                      // ElevatedButton.icon(
+                      //   onPressed: () {
+                      //     // Handle button tap
+                      //   },
+                      //   icon: Icon(Icons.add_shopping_cart), // Add icon to the button
                       //   label: Text('Add to Cart'), // Add label to the button
                       // ),
                     ],
