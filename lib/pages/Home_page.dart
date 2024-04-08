@@ -71,13 +71,13 @@ class _ProductListScreenState extends State<ProductListScreen> {
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Colors.green,
+                      //borderRadius: BorderRadius.circular(8),
+                      color: Colors.white,
                     ),
                     child: Text(
                       'See All',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.green,
                         fontSize: 14,
                       ),
                     ),
@@ -101,7 +101,28 @@ class _ProductListScreenState extends State<ProductListScreen> {
                         height: 100,
                         fit: BoxFit.cover,
                       ),
-                      Text(product.name),
+                      Text(
+                        product.name,
+                        style: TextStyle(
+                          fontSize: 18, // Change the font size as desired
+                          //color: Colors.grey, // Customize the color if needed
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      Text(
+                          product
+                              .price, // Add additional text, change it as needed//
+                          style: TextStyle(
+                            fontSize: 14, // Change the font size as desired
+                            color: Colors.grey, // Customize the color if needed
+                          )) // Add spacing between additional text and button
+                      // ElevatedButton.icon(
+                      //   onPressed: () {
+                      //     // Handle button tap
+                      //   },
+                      //   icon: Icon(Icons.add), // Add icon to the button
+                      //   label: Text('Add to Cart'), // Add label to the button
+                      // ),
                     ],
                   ),
                 );
