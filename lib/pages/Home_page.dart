@@ -52,15 +52,16 @@ class _ProductListScreenState extends State<ProductListScreen> {
               ),
             ),
             SizedBox(
-                height: 20), // Add some spacing between search and sections
+              height: 20,
+            ), // Add some spacing between search and sections
             _buildSection('Exclusive Offer'),
             _buildProductList(filteredProducts), // Exclusive Offer products
             SizedBox(height: 20), // Add some spacing between sections
             _buildSection('Best Selling'),
-            _buildProductList(filteredProducts), // Best Selling products
+            _buildProductList(bestSellingProducts), // Best Selling products
             SizedBox(height: 20), // Add some spacing between sections
             _buildSection('Groceries'), // New Section for Groceries
-            _buildProductList(filteredProducts), // Groceries products
+            _buildProductList(groceriesProducts), // Groceries products
           ],
         ),
       ),

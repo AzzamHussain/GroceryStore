@@ -77,8 +77,13 @@ flutter:
     - assets/adv.jpeg
     - assets/pomegranate.png
     - assets/papaya.png
-    - assets/exploreNav.png
-    - assets/favNav.png
+    - assets/flour.png
+    - assets/RedChilli.png
+    - assets/sesameSeeds.png
+    - assets/parsleyleaves.png
+    - assets/eggs.png
+    
+
     
   #   - images/a_dot_ham.jpeg
 
