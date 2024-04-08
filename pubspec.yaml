@@ -75,6 +75,10 @@ flutter:
     - assets/orange.png
     - assets/banana.png
     - assets/adv.jpeg
+    - assets/pomegranate.png
+    - assets/papaya.png
+    - assets/exploreNav.png
+    - assets/favNav.png
     
   #   - images/a_dot_ham.jpeg
 
