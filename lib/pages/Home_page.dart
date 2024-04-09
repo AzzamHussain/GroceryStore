@@ -11,7 +11,15 @@ class ProductListScreen extends StatefulWidget {
 }
 
 class _ProductListScreenState extends State<ProductListScreen> {
+  int _selectedIndex = 0;
+
   List<Product> filteredProducts = List.from(products);
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +73,53 @@ class _ProductListScreenState extends State<ProductListScreen> {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/shopN.png',
+              width: 30,
+              height: 30,
+            ),
+            label: 'Shop',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/expN.png',
+              width: 30,
+              height: 30,
+            ),
+            label: 'Explore',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/c.png',
+              width: 30,
+              height: 30,
+            ),
+            label: 'Cart',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/favN.png',
+              width: 30,
+              height: 30,
+            ),
+            label: 'Favorites',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/ac.png',
+              width: 30,
+              height: 30,
+            ),
+            label: 'Account',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.green,
+        onTap: _onItemTapped,
+      ),
     );
   }
 
@@ -109,81 +164,91 @@ class _ProductListScreenState extends State<ProductListScreen> {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: products.map((product) {
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              width: 150,
-              height: 200.51,
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 5,
-                    offset: Offset(0, 2),
-                  ),
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    product.image,
-                    width: 100,
-                    height: 100,
-                    fit: BoxFit.cover,
-                  ),
-                  SizedBox(height: 8),
-                  Text(
-                    product.name,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProductDetailsScreen(product: product),
+                ),
+              );
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width: 150,
+                height: 200.51,
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 5,
+                      offset: Offset(0, 2),
                     ),
-                  ),
-                  SizedBox(height: 4),
-                  Text(
-                    product.quantity,
-                    style: TextStyle(
-                      fontSize: 10,
-                      color: Colors.grey,
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      product.image,
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
                     ),
-                  ),
-                  SizedBox(height: 4),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        product.price,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.black,
-                        ),
+                    SizedBox(height: 8),
+                    Text(
+                      product.name,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
                       ),
-                      SizedBox(width: 4),
-                      InkWell(
-                        onTap: () {
-                          // Handle button tap
-                        },
-                        child: Container(
-                          width: 24,
-                          height: 24,
-                          decoration: BoxDecoration(
-                            color: Colors.green,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Icon(
-                            Icons.add,
-                            color: Colors.white,
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      product.quantity,
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    SizedBox(height: 4),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          product.price,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black,
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                        SizedBox(width: 4),
+                        InkWell(
+                          onTap: () {
+                            // Handle button tap
+                          },
+                          child: Container(
+                            width: 24,
+                            height: 24,
+                            decoration: BoxDecoration(
+                              color: Colors.green,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Icon(
+                              Icons.add,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           );

@@ -13,21 +13,42 @@ class ProductDetailsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Product Details'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            width: 364, // Set the width of the image
+            height: 67, // Set the height of the image
+            margin: EdgeInsets.only(
+                top: 790.33, left: 25), // Set the position of the image
+            child: Image.asset(
               product.image,
-              width: 100,
-              height: 100,
               fit: BoxFit.cover,
             ),
-            SizedBox(height: 20),
-            Text(product.name, style: TextStyle(fontSize: 20)),
-            // Add more details as needed
-          ],
-        ),
+          ),
+          SizedBox(height: 20),
+          Text(
+            product.name,
+            style: TextStyle(fontSize: 20),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              // Implement your Add to Basket functionality here
+            },
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(
+                  Colors.green), // Change button color to green
+              minimumSize: MaterialStateProperty.all(
+                  Size(364, 67)), // Set the size of the button
+            ),
+            child: Text(
+              'Add to Basket',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ],
       ),
     );
   }
