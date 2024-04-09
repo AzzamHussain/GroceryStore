@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:grocerystore/pages/explore.dart';
+import 'package:grocerystore/pages/Favorite.dart';
 import 'package:grocerystore/pages/product.dart';
 import 'package:grocerystore/pages/productDetails.dart';
 import 'package:grocerystore/constants/colors.dart';
@@ -19,6 +21,28 @@ class _ProductListScreenState extends State<ProductListScreen> {
     setState(() {
       _selectedIndex = index;
     });
+
+    // Navigate to different screens based on the selected index
+    switch (index) {
+      case 0:
+        // Shop button tapped, do nothing (stay on homepage)
+        break;
+      case 1:
+        // Explore button tapped, navigate to ExploreScreen
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ExploreScreen()),
+        );
+        break;
+      case 2:
+        // Favorite button tapped, navigate to FavoriteScreen
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => FavouriteScreen()),
+        );
+        break;
+      // Add more cases for additional buttons if needed
+    }
   }
 
   @override
