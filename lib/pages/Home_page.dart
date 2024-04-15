@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocerystore/pages/Accounts.dart';
 import 'package:grocerystore/pages/explore.dart';
 import 'package:grocerystore/pages/Favorite.dart';
 import 'package:grocerystore/pages/product.dart';
@@ -21,28 +22,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
     setState(() {
       _selectedIndex = index;
     });
-
-    // Navigate to different screens based on the selected index
-    switch (index) {
-      case 0:
-        // Shop button tapped, do nothing (stay on homepage)
-        break;
-      case 1:
-        // Explore button tapped, navigate to ExploreScreen
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ExploreScreen()),
-        );
-        break;
-      case 2:
-        // Favorite button tapped, navigate to FavoriteScreen
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => FavouriteScreen()),
-        );
-        break;
-      // Add more cases for additional buttons if needed
-    }
   }
 
   @override
@@ -51,78 +30,99 @@ class _ProductListScreenState extends State<ProductListScreen> {
       appBar: AppBar(
         title: Text('Fruit Shop'),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: TextField(
-                    onChanged: (value) {
-                      setState(() {
-                        filteredProducts = products
-                            .where((product) => product.name
-                                .toLowerCase()
-                                .contains(value.toLowerCase()))
-                            .toList();
-                      });
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Search...',
-                      border: InputBorder.none,
-                      prefixIcon: Icon(Icons.search),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ), // Add some spacing between search and sections
-            _buildSection('Exclusive Offer'),
-            _buildProductList(filteredProducts), // Exclusive Offer products
-            SizedBox(height: 20), // Add some spacing between sections
-            _buildSection('Best Selling'),
-            _buildProductList(bestSellingProducts), // Best Selling products
-            SizedBox(height: 20), // Add some spacing between sections
-            _buildSection('Groceries'), // New Section for Groceries
-            _buildProductList(groceriesProducts), // Groceries products
-          ],
-        ),
-      ),
+      body: _buildScreen(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.shop),
+            icon: Icon(Icons.shop, color: Colors.black),
             label: 'Shop',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.explore),
+            icon: Icon(Icons.explore, color: Colors.black),
             label: 'Explore',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
+            icon: Icon(Icons.shopping_cart, color: Colors.black),
             label: 'Cart',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
+            icon: Icon(Icons.favorite, color: Colors.black),
             label: 'Favorites',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
+            icon: Icon(Icons.account_circle, color: Colors.black),
             label: 'Account',
           ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.black87,
         onTap: _onItemTapped,
+      ),
+    );
+  }
+
+  Widget _buildScreen(int index) {
+    switch (index) {
+      case 0:
+        return _buildShopScreen();
+      case 1:
+        return ExploreScreen();
+      case 2:
+        return Container(); // Placeholder for CartScreen
+      case 3:
+        return FavouriteScreen();
+      case 4:
+        return AccountScreen();
+      default:
+        return _buildShopScreen(); // Default to shop screen
+    }
+  }
+
+  Widget _buildShopScreen() {
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: TextField(
+                  onChanged: (value) {
+                    setState(() {
+                      filteredProducts = products
+                          .where((product) => product.name
+                              .toLowerCase()
+                              .contains(value.toLowerCase()))
+                          .toList();
+                    });
+                  },
+                  decoration: InputDecoration(
+                    hintText: 'Search...',
+                    border: InputBorder.none,
+                    prefixIcon: Icon(Icons.search),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ), // Add some spacing between search and sections
+          _buildSection('Exclusive Offer'),
+          _buildProductList(filteredProducts), // Exclusive Offer products
+          SizedBox(height: 20), // Add some spacing between sections
+          _buildSection('Best Selling'),
+          _buildProductList(bestSellingProducts), // Best Selling products
+          SizedBox(height: 20), // Add some spacing between sections
+          _buildSection('Groceries'), // New Section for Groceries
+          _buildProductList(groceriesProducts), // Groceries products
+        ],
       ),
     );
   }
