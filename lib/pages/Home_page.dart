@@ -27,10 +27,22 @@ class _ProductListScreenState extends State<ProductListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Fruit Shop'),
+      appBar: AppBar(),
+      body: Stack(
+        children: [
+          Positioned(
+            top: 7.0,
+            left: 100.42,
+            child: Container(
+              width: 162.57,
+              height: 22.69,
+              padding: EdgeInsets.zero,
+              child: Image.asset('assets/location.png'),
+            ),
+          ),
+          _buildScreen(_selectedIndex),
+        ],
       ),
-      body: _buildScreen(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -85,27 +97,32 @@ class _ProductListScreenState extends State<ProductListScreen> {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.grey.shade200,
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: TextField(
-                  onChanged: (value) {
-                    setState(() {
-                      filteredProducts = products
-                          .where((product) => product.name
-                              .toLowerCase()
-                              .contains(value.toLowerCase()))
-                          .toList();
-                    });
-                  },
-                  decoration: InputDecoration(
-                    hintText: 'Search...',
-                    border: InputBorder.none,
-                    prefixIcon: Icon(Icons.search),
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  top: 20.0), // Adjust the top padding value
+              child: Container(
+                height: 40,
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: TextField(
+                    onChanged: (value) {
+                      setState(() {
+                        filteredProducts = products
+                            .where((product) => product.name
+                                .toLowerCase()
+                                .contains(value.toLowerCase()))
+                            .toList();
+                      });
+                    },
+                    decoration: InputDecoration(
+                      hintText: 'Search...',
+                      border: InputBorder.none,
+                      prefixIcon: Icon(Icons.search),
+                    ),
                   ),
                 ),
               ),
@@ -147,7 +164,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.white, //
               ),
               child: Text(
                 'See All',
