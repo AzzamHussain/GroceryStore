@@ -100,48 +100,28 @@ class _ProductListScreenState extends State<ProductListScreen> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/shopN.png',
-              width: 30,
-              height: 30,
-            ),
+            icon: Icon(Icons.shop),
             label: 'Shop',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/expN.png',
-              width: 30,
-              height: 30,
-            ),
+            icon: Icon(Icons.explore),
             label: 'Explore',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/c.png',
-              width: 30,
-              height: 30,
-            ),
+            icon: Icon(Icons.shopping_cart),
             label: 'Cart',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/favN.png',
-              width: 30,
-              height: 30,
-            ),
+            icon: Icon(Icons.favorite),
             label: 'Favorites',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/ac.png',
-              width: 30,
-              height: 30,
-            ),
+            icon: Icon(Icons.account_circle),
             label: 'Account',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.green,
+        selectedItemColor: Colors.black87,
         onTap: _onItemTapped,
       ),
     );
