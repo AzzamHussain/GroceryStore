@@ -1,79 +1,101 @@
 import 'package:flutter/material.dart';
 
-class ExploreScreen extends StatelessWidget {
+class ExploreScreen extends StatefulWidget {
+  @override
+  _ExploreScreenState createState() => _ExploreScreenState();
+}
+
+class _ExploreScreenState extends State<ExploreScreen> {
+  List<Map<String, String>> products = [
+    {'title': 'Fruits and Vegetables', 'imagePath': 'assets/ad1.png'},
+    {'title': 'Meat & Fish', 'imagePath': 'assets/Meat & Fish.png'},
+    {'title': 'Beverages', 'imagePath': 'assets/Beverages.png'},
+    {'title': 'Bakery', 'imagePath': 'assets/Bakery.png'},
+    {'title': 'Eggs & Dairy', 'imagePath': 'assets/Eggs & Dairy.png'},
+    {'title': 'Oil & Ghee', 'imagePath': 'assets/Oil & Ghee.png'}
+  ];
+
+  List<Map<String, String>> filteredProducts = [];
+
+  @override
+  void initState() {
+    super.initState();
+    filteredProducts = List.from(products);
+  }
+
+  void _search(String query) {
+    setState(() {
+      filteredProducts = products
+          .where((product) =>
+              product['title']!.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Find Products'),
-        // actions: [
-        //   IconButton(
-        //     icon: Icon(Icons.search),
-        //     onPressed: () {
-        //       // Handle search button tap
-        //     },
-        //   ),
-        // ],
+        title: Text('Explore'),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            _buildSearchBar(), // Search bar widget
-            _buildCardRow([
-              _buildCard('Fruits and Vegetables', 'assets/ad1.png'),
-              _buildCard('Meat & Fish', 'assets/Meat & Fish.png'),
-            ]),
-            _buildCardRow([
-              _buildCard('Beverages', 'assets/Beverages.png'),
-              _buildCard('Bakery', 'assets/Bakery.png'),
-            ]),
-            _buildCardRow([
-              _buildCard('Eggs & Dairy', 'assets/Eggs & Dairy.png'),
-              _buildCard('Oil & Ghee', 'assets/Oil & Ghee.png'),
-            ]),
+            Text(
+              'Find Products',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                height: 40,
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: TextField(
+                    onChanged: _search,
+                    decoration: InputDecoration(
+                      hintText: 'Search...',
+                      border: InputBorder.none,
+                      prefixIcon: Icon(Icons.search),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            GridView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 8.0,
+                crossAxisSpacing: 8.0,
+                childAspectRatio: 0.8,
+              ),
+              itemCount: filteredProducts.length,
+              itemBuilder: (context, index) {
+                return _buildCard(
+                  filteredProducts[index]['title']!,
+                  filteredProducts[index]['imagePath']!,
+                );
+              },
+            ),
           ],
         ),
       ),
     );
   }
 
-  // Widget to build the search bar
-  Widget _buildSearchBar() {
-    return Container(
-      margin: EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-        color: Colors.grey.shade200,
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      child: TextField(
-        onChanged: (value) {
-          // Handle search text change
-        },
-        decoration: InputDecoration(
-          hintText: 'Search...',
-          border: InputBorder.none,
-          prefixIcon: Icon(Icons.search),
-        ),
-      ),
-    );
-  }
-
-  // Widget to build a row of cards
-  Widget _buildCardRow(List<Widget> cards) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: cards,
-      ),
-    );
-  }
-
-  // Widget to build a card with title and image
   Widget _buildCard(String title, String imagePath) {
     return Container(
-      width: 150,
-      height: 200.51,
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: Colors.white,
