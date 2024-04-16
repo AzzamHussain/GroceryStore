@@ -217,8 +217,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
                   children: [
                     Image.asset(
                       product.image,
-                      width: 100,
-                      height: 100,
+                      width: 100, // Adjust the width here as needed
+                      height: 100, // Adjust the height here as needed
                       fit: BoxFit.cover,
                     ),
                     SizedBox(height: 8),

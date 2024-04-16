@@ -98,6 +98,17 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 padding: EdgeInsets.symmetric(vertical: 16.0),
               ),
             ),
+            SizedBox(height: 16.0),
+            Container(
+              width: 329.34,
+              height: 199.18,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(widget.product.image),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
           ],
         ),
       ),
