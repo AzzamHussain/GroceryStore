@@ -3,7 +3,7 @@ import 'package:grocerystore/pages/Accounts.dart';
 import 'package:grocerystore/pages/explore.dart';
 import 'package:grocerystore/pages/Favorite.dart';
 import 'package:grocerystore/pages/product.dart';
-import 'package:grocerystore/pages/productDetails.dart';
+import 'package:grocerystore/pages/productDetails.dart'; // Import your ProductDetailsScreen
 import 'package:grocerystore/constants/colors.dart';
 
 class ProductListScreen extends StatefulWidget {

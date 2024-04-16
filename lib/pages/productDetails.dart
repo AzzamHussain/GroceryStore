@@ -1,54 +1,105 @@
 import 'package:flutter/material.dart';
-import 'package:grocerystore/pages/product.dart';
+import 'package:givestarreviews/givestarreviews.dart'; // Import the star rating package
+import 'package:grocerystore/pages/product.dart'; // Import your Product class
 
-class ProductDetailsScreen extends StatelessWidget {
+class ProductDetailsScreen extends StatefulWidget {
   final Product product;
 
-  const ProductDetailsScreen({Key? key, required this.product})
-      : super(key: key);
+  ProductDetailsScreen({required this.product});
+
+  @override
+  _ProductDetailsScreenState createState() => _ProductDetailsScreenState();
+}
+
+class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
+  int _quantity = 1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Product Details'),
+        title: Text(widget.product.name),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            width: 364, // Set the width of the image
-            height: 67, // Set the height of the image
-            margin: EdgeInsets.only(
-                top: 790.33, left: 25), // Set the position of the image
-            child: Image.asset(
-              product.image,
-              fit: BoxFit.cover,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              widget.product.name,
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          SizedBox(height: 20),
-          Text(
-            product.name,
-            style: TextStyle(fontSize: 20),
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              // Implement your Add to Basket functionality here
-            },
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(
-                  Colors.green), // Change button color to green
-              minimumSize: MaterialStateProperty.all(
-                  Size(364, 67)), // Set the size of the button
+            SizedBox(height: 8.0),
+            Text(
+              widget.product.description,
+              style: TextStyle(fontSize: 16.0),
             ),
-            child: Text(
-              'Add to Basket',
-              style: TextStyle(fontSize: 20),
+            SizedBox(height: 16.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.remove),
+                  onPressed: () {
+                    setState(() {
+                      if (_quantity > 1) {
+                        _quantity--;
+                      }
+                    });
+                  },
+                ),
+                Text(
+                  '$_quantity',
+                  style: TextStyle(fontSize: 20.0),
+                ),
+                IconButton(
+                  icon: Icon(Icons.add),
+                  onPressed: () {
+                    setState(() {
+                      _quantity++;
+                    });
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.favorite_border),
+                  onPressed: () {
+                    // Handle favorite button tap
+                  },
+                ),
+              ],
             ),
-          ),
-        ],
+            SizedBox(height: 16.0),
+            // Expanded(
+            //   child: Center(
+            //     child: GiveStarReviews(
+            //       starCount: 5,
+            //       size: 30.0,
+            //       color: Colors.amber,
+            //       borderColor: Colors.grey,
+            //       spacing: 5.0,
+            //       rating: widget.product.rating, // Assuming your Product class has a 'rating' field
+            //       onRatingChanged: (rating) {
+            //         // Handle rating change
+            //       },
+            //     ),
+            //   ),
+            // ),
+            // SizedBox(height: 16.0),
+            ElevatedButton(
+              onPressed: () {
+                // Handle add to basket button tap
+              },
+              child: Text('Add to Basket', style: TextStyle(fontSize: 16.0)),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green,
+                padding: EdgeInsets.symmetric(vertical: 16.0),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
