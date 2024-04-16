@@ -5,11 +5,20 @@ class ExploreScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Explore'),
+        title: Text('Find Products'),
+        // actions: [
+        //   IconButton(
+        //     icon: Icon(Icons.search),
+        //     onPressed: () {
+        //       // Handle search button tap
+        //     },
+        //   ),
+        // ],
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
+            _buildSearchBar(), // Search bar widget
             _buildCardRow([
               _buildCard('Fruits and Vegetables', 'assets/ad1.png'),
               _buildCard('Meat & Fish', 'assets/Meat & Fish.png'),
@@ -28,6 +37,28 @@ class ExploreScreen extends StatelessWidget {
     );
   }
 
+  // Widget to build the search bar
+  Widget _buildSearchBar() {
+    return Container(
+      margin: EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        color: Colors.grey.shade200,
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: TextField(
+        onChanged: (value) {
+          // Handle search text change
+        },
+        decoration: InputDecoration(
+          hintText: 'Search...',
+          border: InputBorder.none,
+          prefixIcon: Icon(Icons.search),
+        ),
+      ),
+    );
+  }
+
+  // Widget to build a row of cards
   Widget _buildCardRow(List<Widget> cards) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -38,6 +69,7 @@ class ExploreScreen extends StatelessWidget {
     );
   }
 
+  // Widget to build a card with title and image
   Widget _buildCard(String title, String imagePath) {
     return Container(
       width: 150,
