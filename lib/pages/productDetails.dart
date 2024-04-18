@@ -64,9 +64,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   },
                 ),
                 IconButton(
-                  icon: Icon(Icons.favorite_border),
+                  icon: Icon(widget.product.isfavorite
+                      ? Icons.favorite
+                      : Icons.favorite_border),
                   onPressed: () {
-                    // Handle favorite button tap
+                    setState(() {
+                      widget.product.isfavorite =
+                          !widget.product.isfavorite; // Toggle favorite status
+                    });
                   },
                 ),
               ],

@@ -5,6 +5,7 @@ class Product {
   final String quantity;
   final String description;
   final double rating;
+  bool isfavorite;
 
   Product(
       {required this.name,
@@ -12,7 +13,8 @@ class Product {
       required this.price,
       required this.quantity,
       required this.description,
-      required this.rating});
+      required this.rating,
+      this.isfavorite = false});
 }
 
 final List<Product> products = [
@@ -51,7 +53,6 @@ final List<Product> products = [
       quantity: '1Kg',
       description: 'Fresh Papaya',
       rating: 9.0),
-    
 ];
 
 final List<Product> bestSellingProducts = [
