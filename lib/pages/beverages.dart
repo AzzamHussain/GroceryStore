@@ -41,16 +41,24 @@ class BeveragesScreen extends StatelessWidget {
 
   Widget _buildBeverageCard(String title, String imagePath) {
     return Container(
-      width: 173.32,
-      height: 248.51,
-      padding: EdgeInsets.all(8),
+      width: 150.32,
+      height: 200.51,
+      padding: EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(18),
-          bottomLeft: Radius.circular(18),
-        ),
-        border: Border.all(color: Colors.black),
+        // borderRadius: BorderRadius.only(
+        //   topLeft: Radius.circular(18),
+        //   bottomLeft: Radius.circular(18),
+        // ),color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.lightGreen.withOpacity(0.5),
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: Offset(0, 2),
+          ),
+        ],
+        // border: Border.all(color: Colors.white12),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -74,7 +82,7 @@ class BeveragesScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Amount',
+                'Rs 200',
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -86,13 +94,17 @@ class BeveragesScreen extends StatelessWidget {
                   // Implement increment functionality
                 },
                 child: Container(
-                  width: 17,
-                  height: 17,
+                  width: 40,
+                  height: 40,
+                  //decoration: BoxDecoration(
+                  // shape: BoxShape.circle,
+                  // // color: Colors.green,
+                  // // borderRadius: BorderRadius.circular(8)),
                   decoration: BoxDecoration(
-                    shape: BoxShape.circle,
                     color: Colors.green,
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Icon(Icons.add, color: Colors.white, size: 12),
+                  child: Icon(Icons.add, color: Colors.white, size: 18),
                 ),
               ),
             ],
