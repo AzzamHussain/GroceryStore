@@ -1,38 +1,32 @@
 import 'package:flutter/material.dart';
+import 'beverages.dart'; // Import the BeveragesScreen
 
 class ExploreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false, // Remove back arrows
-        title: Text(
-          'Find Products',
-        ),
+        automaticallyImplyLeading: false,
+        title: Text('Find Products'),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Center(
-            //   child: Padding(
-            //     padding: const EdgeInsets.symmetric(vertical: 16.0),
-            //     child: Text(
-            //       'Find Products',
-            //       style: TextStyle(
-            //         fontSize: 20.0,
-            //         fontWeight: FontWeight.bold,
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            _buildSearchBar(), // Add the search bar
+            _buildSearchBar(),
             _buildCardRow([
               _buildCard('Fruits and Vegetables', 'assets/ad1.png'),
               _buildCard('Meat & Fish', 'assets/Meat & Fish.png'),
             ]),
             _buildCardRow([
-              _buildCard('Beverages', 'assets/Beverages.png'),
-              _buildCard('Bakery', 'assets/Bakery.png'),
+              _buildCard('Beverages', 'assets/Beverages.png', () {
+                // Navigate to BeveragesScreen when Beverages card is tapped
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BeveragesScreen()),
+                );
+              }),
+              _buildCard('Bakery',
+                  'assets/Bakery.png'), // No onTap function needed for Bakery
             ]),
             _buildCardRow([
               _buildCard('Eggs & Dairy', 'assets/Eggs & Dairy.png'),
@@ -54,41 +48,44 @@ class ExploreScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCard(String title, String imagePath) {
-    return Container(
-      width: 150,
-      height: 200.51,
-      padding: EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 1,
-            blurRadius: 5,
-            offset: Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            imagePath,
-            width: 100,
-            height: 100,
-            fit: BoxFit.cover,
-          ),
-          SizedBox(height: 8),
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+  Widget _buildCard(String title, String imagePath, [Function()? onTap]) {
+    return GestureDetector(
+      onTap: onTap, // Execute the onTap function when card is tapped
+      child: Container(
+        width: 150,
+        height: 200.51,
+        padding: EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 1,
+              blurRadius: 5,
+              offset: Offset(0, 2),
             ),
-          ),
-        ],
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              imagePath,
+              width: 100,
+              height: 100,
+              fit: BoxFit.cover,
+            ),
+            SizedBox(height: 8),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
