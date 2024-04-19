@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:givestarreviews/givestarreviews.dart'; // Import the star rating package
-import 'package:grocerystore/pages/product.dart'; // Import your Product class
+import 'package:grocerystore/pages/product.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   final Product product;
+  final Function(Product) toggleFavorite;
 
-  ProductDetailsScreen({required this.product});
+  ProductDetailsScreen({required this.product, required this.toggleFavorite});
 
   @override
   _ProductDetailsScreenState createState() => _ProductDetailsScreenState();
@@ -69,30 +69,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       : Icons.favorite_border),
                   onPressed: () {
                     setState(() {
-                      widget.product.isfavorite =
-                          !widget.product.isfavorite; // Toggle favorite status
+                      widget.product.isfavorite = !widget.product.isfavorite;
+                      widget.toggleFavorite(widget.product);
                     });
                   },
                 ),
               ],
             ),
             SizedBox(height: 16.0),
-            // Expanded(
-            //   child: Center(
-            //     child: GiveStarReviews(
-            //       starCount: 5,
-            //       size: 30.0,
-            //       color: Colors.amber,
-            //       borderColor: Colors.grey,
-            //       spacing: 5.0,
-            //       rating: widget.product.rating, // Assuming your Product class has a 'rating' field
-            //       onRatingChanged: (rating) {
-            //         // Handle rating change
-            //       },
-            //     ),
-            //   ),
-            // ),
-            // SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
                 // Handle add to basket button tap

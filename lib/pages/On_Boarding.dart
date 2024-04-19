@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:grocerystore/pages/Home_page.dart';
 import 'package:grocerystore/pages/product.dart';
 import 'package:grocerystore/pages/productDetails.dart';
-//import 'package:grocerystore/pages/HomePage/HomePage.dart';
 
 class Boarding extends StatefulWidget {
-  const Boarding({super.key});
+  const Boarding({Key? key}) : super(key: key);
 
   @override
   State<Boarding> createState() => _BoardingState();
@@ -76,18 +75,17 @@ class _BoardingState extends State<Boarding> {
               },
               child: Container(
                 height: 67,
-                width: 353, // Adjust width as needed
+                width: 353,
                 decoration: BoxDecoration(
-                  color: Colors.green, // Change color as needed
-                  borderRadius: BorderRadius.circular(
-                      10), // Adjust border radius as needed
+                  color: Colors.green,
+                  borderRadius: BorderRadius.circular(10),
                 ),
                 child: Center(
                   child: Text(
                     'Get Started',
                     style: TextStyle(
-                      color: Colors.white, // Change text color as needed
-                      fontSize: 18, // Change text size as needed
+                      color: Colors.white,
+                      fontSize: 18,
                     ),
                   ),
                 ),

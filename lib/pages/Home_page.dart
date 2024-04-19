@@ -3,7 +3,7 @@ import 'package:grocerystore/pages/Accounts.dart';
 import 'package:grocerystore/pages/explore.dart';
 import 'package:grocerystore/pages/Favorite.dart';
 import 'package:grocerystore/pages/product.dart';
-import 'package:grocerystore/pages/productDetails.dart'; // Import your ProductDetailsScreen
+import 'package:grocerystore/pages/productDetails.dart';
 import 'package:grocerystore/constants/colors.dart';
 
 class ProductListScreen extends StatefulWidget {
@@ -15,12 +15,22 @@ class ProductListScreen extends StatefulWidget {
 
 class _ProductListScreenState extends State<ProductListScreen> {
   int _selectedIndex = 0;
-
   List<Product> filteredProducts = List.from(products);
+  List<Product> favoriteProducts = [];
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+    });
+  }
+
+  void _toggleFavorite(Product product) {
+    setState(() {
+      if (favoriteProducts.contains(product)) {
+        favoriteProducts.remove(product);
+      } else {
+        favoriteProducts.add(product);
+      }
     });
   }
 
@@ -80,13 +90,16 @@ class _ProductListScreenState extends State<ProductListScreen> {
       case 1:
         return ExploreScreen();
       case 2:
-        return Container(); // Placeholder for CartScreen
+        return Container();
       case 3:
-        return FavouriteScreen();
+        return FavouriteScreen(
+          favoriteProducts: favoriteProducts,
+          toggleFavorite: _toggleFavorite,
+        );
       case 4:
         return AccountScreen();
       default:
-        return _buildShopScreen(); // Default to shop screen
+        return _buildShopScreen();
     }
   }
 
@@ -98,8 +111,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Padding(
-              padding: const EdgeInsets.only(
-                  top: 20.0), // Adjust the top padding value
+              padding: const EdgeInsets.only(top: 20.0),
               child: Container(
                 height: 40,
                 decoration: BoxDecoration(
@@ -130,15 +142,15 @@ class _ProductListScreenState extends State<ProductListScreen> {
           ),
           SizedBox(
             height: 20,
-          ), // Add some spacing between search and sections
+          ),
           _buildSection('Exclusive Offer'),
-          _buildProductList(filteredProducts), // Exclusive Offer products
-          SizedBox(height: 20), // Add some spacing between sections
+          _buildProductList(filteredProducts),
+          SizedBox(height: 20),
           _buildSection('Best Selling'),
-          _buildProductList(bestSellingProducts), // Best Selling products
-          SizedBox(height: 20), // Add some spacing between sections
-          _buildSection('Groceries'), // New Section for Groceries
-          _buildProductList(groceriesProducts), // Groceries products
+          _buildProductList(bestSellingProducts),
+          SizedBox(height: 20),
+          _buildSection('Groceries'),
+          _buildProductList(groceriesProducts),
         ],
       ),
     );
@@ -164,7 +176,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                color: Colors.white, //
+                color: Colors.white,
               ),
               child: Text(
                 'See All',
@@ -190,7 +202,10 @@ class _ProductListScreenState extends State<ProductListScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ProductDetailsScreen(product: product),
+                  builder: (context) => ProductDetailsScreen(
+                    product: product,
+                    toggleFavorite: _toggleFavorite,
+                  ),
                 ),
               );
             },
@@ -217,8 +232,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
                   children: [
                     Image.asset(
                       product.image,
-                      width: 100, // Adjust the width here as needed
-                      height: 100, // Adjust the height here as needed
+                      width: 100,
+                      height: 100,
                       fit: BoxFit.cover,
                     ),
                     SizedBox(height: 8),
@@ -273,6 +288,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
               ),
             ),
           );
+          //}).toList;
         }).toList(),
       ),
     );

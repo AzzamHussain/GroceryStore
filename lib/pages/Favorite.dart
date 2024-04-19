@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:grocerystore/pages/product.dart';
 
 class FavouriteScreen extends StatefulWidget {
-  const FavouriteScreen({Key? key}) : super(key: key);
+  final List<Product> favoriteProducts;
+  final Function(Product) toggleFavorite;
+
+  const FavouriteScreen({
+    Key? key,
+    required this.favoriteProducts,
+    required this.toggleFavorite,
+  }) : super(key: key);
 
   @override
   State<FavouriteScreen> createState() => _FavouriteScreenState();
 }
 
 class _FavouriteScreenState extends State<FavouriteScreen> {
-  List<Product> favoriteProducts = [];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,11 +25,16 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            for (var product in favoriteProducts)
+            for (var product in widget.favoriteProducts)
               ListTile(
-                leading: Image.asset(product.image), // Display product image
+                leading: Image.asset(product.image),
                 title: Text(product.name),
-                // Add other details if needed
+                trailing: IconButton(
+                  icon: Icon(Icons.favorite, color: Colors.red),
+                  onPressed: () {
+                    widget.toggleFavorite(product);
+                  },
+                ),
               ),
             ElevatedButton(
               onPressed: () {
