@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocerystore/pages/product.dart';
+import 'package:grocerystore/pages/cart.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   final Product product;
@@ -80,6 +81,12 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             ElevatedButton(
               onPressed: () {
                 // Handle add to basket button tap
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CartScreen(
+                          product: widget.product, quantity: _quantity)),
+                );
               },
               child: Text('Add to Basket', style: TextStyle(fontSize: 16.0)),
               style: ElevatedButton.styleFrom(
