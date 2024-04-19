@@ -41,12 +41,12 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
               onPressed: () {
                 // Implement add to basket button
               },
-              child: Text('Add to Basket'),
+              child: Text('Add to Basket', style: TextStyle(fontSize: 16.0)),
               style: ElevatedButton.styleFrom(
                 primary: Colors.green,
-                padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
+                padding: EdgeInsets.symmetric(horizontal: 129, vertical: 25.0),
+                //   shape: RoundedRectangleBorder(
+                //       borderRadius: BorderRadius.circular(20)),
               ),
             ),
           ],
