@@ -20,6 +20,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text('Favorites'),
       ),
       body: SingleChildScrollView(
@@ -43,13 +44,9 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
               child: Text('Add to Basket'),
               style: ElevatedButton.styleFrom(
                 primary: Colors.green,
-                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(19.0),
-                    bottomLeft: Radius.circular(0.0),
-                  ),
-                ),
+                    borderRadius: BorderRadius.circular(20)),
               ),
             ),
           ],
