@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:grocerystore/pages/product.dart';
-import 'package:grocerystore/pages/cart.dart';
+import 'package:grocerystore/pages/cart.dart'; // Import CartItem
 
 class ProductDetailsScreen extends StatefulWidget {
   final Product product;
   final Function(Product) toggleFavorite;
+  final Function(Product, int) addToCart; // Add addToCart function
 
-  ProductDetailsScreen({required this.product, required this.toggleFavorite});
+  ProductDetailsScreen(
+      {required this.product,
+      required this.toggleFavorite,
+      required this.addToCart});
 
   @override
   _ProductDetailsScreenState createState() => _ProductDetailsScreenState();
@@ -80,12 +84,12 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                // Handle add to basket button tap
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => CartScreen(
-                          product: widget.product, quantity: _quantity)),
+                widget.addToCart(widget.product, _quantity); // Add item to cart
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Added to Cart'),
+                    duration: Duration(seconds: 1),
+                  ),
                 );
               },
               child: Text('Add to Basket', style: TextStyle(fontSize: 16.0)),

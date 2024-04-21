@@ -36,25 +36,17 @@ class _SplashScreenState extends State<SplashScreen> {
             height: MediaQuery.of(context).size.height,
           ),
           // Navigation bar at the top
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: Image.asset(
-              'assets/Navigation_Bar.png',
-              fit: BoxFit.contain, // Adjust the fit as needed
-            ),
-          ),
+          /////////////////
           // Onlight portrait at the bottom
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Image.asset(
-              'assets/On Light - Portrait.png',
-              fit: BoxFit.contain, // Adjust the fit as needed
-            ),
-          ),
+          // Positioned(
+          //   left: 0,
+          //   right: 0,
+          //   child: Image.asset(
+          //     'assets/On Light - Portrait.png',
+          //     fit: BoxFit.contain, // Adjust the fit as needed
+          //   ),
+          // ),  bottom: 0,
+
           // Centered logo
           Positioned(
             top: MediaQuery.of(context).size.height / 2 -

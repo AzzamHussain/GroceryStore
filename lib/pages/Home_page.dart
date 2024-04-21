@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocerystore/pages/Accounts.dart';
+import 'package:grocerystore/pages/cartitems.dart';
 import 'package:grocerystore/pages/explore.dart';
 import 'package:grocerystore/pages/Favorite.dart';
 import 'package:grocerystore/pages/product.dart';
@@ -17,6 +18,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
   int _selectedIndex = 0;
   List<Product> filteredProducts = List.from(products);
   List<Product> favoriteProducts = [];
+  List<CartItem> cartItems = []; // Add this list to store cart items
 
   void _onItemTapped(int index) {
     setState(() {
@@ -32,6 +34,13 @@ class _ProductListScreenState extends State<ProductListScreen> {
         favoriteProducts.add(product);
       }
     });
+  }
+
+  void _addToCart(Product product, int quantity) {
+    // Create a new CartItem with the selected product and quantity
+    CartItem newItem = CartItem(product: product, quantity: quantity);
+    // Add the new item to the list of cart items
+    cartItems.add(newItem);
   }
 
   @override
@@ -205,6 +214,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                   builder: (context) => ProductDetailsScreen(
                     product: product,
                     toggleFavorite: _toggleFavorite,
+                    addToCart: _addToCart,
                   ),
                 ),
               );
@@ -288,7 +298,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
               ),
             ),
           );
-          //}).toList;
         }).toList(),
       ),
     );
